@@ -18,7 +18,7 @@ services:
         - 'CONTAINER_PORT=${CONTAINER_PORT:-3000}'
     image: 'open-mercato/app'
     user: '0'
-    command: "sh -c \"if [ ! -f /tmp/init-marker/.seeded ]; then\n  echo 'First run: full initialization...';\n  yarn mercato init && mkdir -p /tmp/init-marker && touch /tmp/init-marker/.seeded;\nelse\n  echo 'Subsequent run: migrations only...';\n  yarn db:migrate;\nfi && yarn start\"\n"
+    command: "sh -c \"yarn db:migrate && yarn start\""
     volumes:
       - 'init_marker:/tmp/init-marker'
       - 'attachments_storage:/app/apps/mercato/storage'
