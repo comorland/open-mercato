@@ -141,4 +141,3 @@ networks:
   mercato-network-fullapp:
     name: 'mercato-network-${DEPLOY_ENV:-local}'
     driver: bridge
-    fix: add docker aliases for database connection
